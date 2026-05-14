@@ -1,0 +1,12 @@
+services:
+  # M2: employee-service and holiday-service added here
+  # M3: leave-service added
+  # M4: gateway added
+  # M5: auth-service added
+
+networks:
+  peoplehub-net:
+    driver: bridge
+
+volumes:
+  # named volumes added per service at M2
