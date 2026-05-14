@@ -1,0 +1,19 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "asyncRewake": true,
+            "rewakeSummary": "Session handoff needed",
+            "rewakeMessage": "Uncommitted changes detected and SESSION-HANDOFF.md is stale. Write SESSION-HANDOFF.md now before the session ends.",
+            "command": "$hasChanges = git diff --name-only HEAD 2>$null; $hasUntracked = git ls-files --others --exclude-standard 2>$null | Where-Object { $_ -notmatch 'SESSION-HANDOFF' }; if ($hasChanges -or $hasUntracked) { $handoff = 'E:\\Freelance\\Github\\projects\\peoplehub\\SESSION-HANDOFF.md'; $needsUpdate = $true; if (Test-Path $handoff) { $age = (Get-Date) - (Get-Item $handoff).LastWriteTime; if ($age.TotalMinutes -lt 30) { $needsUpdate = $false } }; if ($needsUpdate) { exit 2 } }; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

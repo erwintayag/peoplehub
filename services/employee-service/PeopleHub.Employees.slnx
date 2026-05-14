@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PeopleHub.Employees.API/PeopleHub.Employees.API.csproj" />
+    <Project Path="src/PeopleHub.Employees.Application/PeopleHub.Employees.Application.csproj" />
+    <Project Path="src/PeopleHub.Employees.Core/PeopleHub.Employees.Core.csproj" />
+    <Project Path="src/PeopleHub.Employees.Infrastructure/PeopleHub.Employees.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PeopleHub.Employees.IntegrationTests/PeopleHub.Employees.IntegrationTests.csproj" />
+    <Project Path="tests/PeopleHub.Employees.UnitTests/PeopleHub.Employees.UnitTests.csproj" />
+  </Folder>
+</Solution>

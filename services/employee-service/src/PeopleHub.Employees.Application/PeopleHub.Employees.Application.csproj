@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\PeopleHub.Employee.Core\PeopleHub.Employee.Core.csproj" />
+    <ProjectReference Include="..\PeopleHub.Employees.Core\PeopleHub.Employees.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

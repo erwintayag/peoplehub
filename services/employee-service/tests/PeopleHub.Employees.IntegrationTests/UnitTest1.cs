@@ -1,4 +1,4 @@
-﻿namespace PeopleHub.Employee.UnitTests;
+﻿namespace PeopleHub.Employees.IntegrationTests;
 
 public class UnitTest1
 {

@@ -1,69 +1,68 @@
 # SESSION-HANDOFF — PeopleHub
 
 ## Session Date
-2026-05-14 (session 1)
+2026-05-14 (session 2)
 
 ## What Was Done
-- Project planned and designed (grill-me session in projects/)
-- All Claude meta-files created: CLAUDE.md, CONTEXT.md, SESSION-HANDOFF.md, README.md
-- Sprints/SPRINT1.md, Sprints/MILESTONE-SUMMARIES.md created
-- .claude/settings.json (stop hook) created
-- docker-compose.yml stub created
-- .gitignore created
-- EmployeeService solution scaffolded: 4 CA layers + 2 test projects + NuGet packages
-- Project references wired (Core ← Application ← Infrastructure ← API)
-- Boilerplate Class1.cs files removed
-- **No application code written yet** — M1 implementation starts next session
+- Session 1 (2026-05-14): Project planned, meta-files created, solution scaffolded (empty layers)
+- Session 2 (2026-05-14): **M1 complete** ✅
+  - `git init -b main` in `peoplehub/` — repo now independent (no GitHub remote yet, user must create)
+  - Namespace and folder rename: `PeopleHub.Employee.*` → `PeopleHub.Employees.*` to eliminate entity/namespace collision
+  - All 4 CA layers implemented: Core → Application → Infrastructure → API
+  - EF Core migration `InitialCreate` added and applied (SQLite, employees.db)
+  - 7 unit tests with Moq — all pass
+  - `dotnet build` ✓ `dotnet test` (7/7) ✓ `docker build` ✓ `/health` ✓ CRUD ✓
+  - `<RootNamespace>PeopleHub.Employees.Infrastructure</RootNamespace>` added to Infrastructure.csproj
 
 ## Current State
 
 **Working:**
-- Solution builds: `dotnet build` passes (no application code yet — just empty projects)
-- All project references correct
+- `peoplehub/` — git initialized on `main`, no remote yet
+- EmployeeService — M1 complete, fully functional, containerized
+- `dotnet run` → http://localhost:5237
+- `docker run -p 5002:8080 peoplehub-employee` → `/health` returns 200
 
-**Not started:**
-- Employee domain entity, interfaces, repository
-- EF Core DbContext + migration
-- Application service + DTOs + Mapster mapping
-- Minimal API endpoints
-- Dockerfile
-- `dotnet run` / `docker build` not yet verified
+**Uncommitted:**
+- Everything in `peoplehub/` (user commits manually — no Claude commits)
+
+**Not done yet:**
+- GitHub repo `peoplehub` creation (user must create remotely, then `git remote add origin ...`)
+- M2 — HolidayService + Docker Compose
+- Integration test suite (placeholder only)
 
 ## Next Steps (priority order)
-1. **Complete M1 implementation** (in peoplehub/ session):
-   - Write `Employee.cs` domain entity in Core (private setters, factory method)
-   - Write `IEmployeeRepository.cs` in Core
-   - Write `EmployeeDto.cs` + `IEmployeeService.cs` in Application
-   - Write `EmployeeService.cs` in Application (Mapster mapping)
-   - Write `AppDbContext.cs` + `EmployeeRepository.cs` in Infrastructure
-   - Write `ServiceCollectionExtensions.cs` in Infrastructure (DI wiring)
-   - Write `EmployeeEndpoints.cs` in API (Minimal API, CRUD + health check)
-   - Write `Program.cs` in API
-   - Add EF Core migration
-   - Write `Dockerfile` (multi-stage build)
-   - Verify: `docker build` succeeds + `GET /health` returns 200
-2. **Write M1 milestone summary** in `Sprints/MILESTONE-SUMMARIES.md`
-3. **Begin M2** (HolidayService + Docker Compose)
+1. **Create GitHub repo** named `peoplehub` (on GitHub), then:
+   ```
+   cd peoplehub/
+   git remote add origin https://github.com/<username>/peoplehub.git
+   git push -u origin main
+   ```
+2. **Begin M2** — HolidayService + Docker Compose:
+   - Scaffold HolidayService (same 4-layer structure as EmployeeService)
+   - `Holiday.cs` domain entity: `Id`, `Name`, `Date`, `IsRecurring`
+   - CRUD endpoints + `/health`
+   - `GET /api/v1/holidays/check?startDate=&endDate=` — overlap check endpoint
+   - Dockerfile
+   - Update `docker-compose.yml` — wire employee-service + holiday-service
+   - Named volumes, healthchecks, `peoplehub-net` network
 
 ## Key Decisions Made
-- Stack: .NET 10, SQLite (dev), Docker, YARP gateway, RabbitMQ (M6+)
-- 4 initial services: Employee (:5002), Holiday (:5003), Leave (:5004), Auth (:5001)
-- Gateway on :5000
-- No frontend until M10
-- Each service = independent .sln (never mixed)
-- No shared DB — ever
-- Communication: sync HTTP M1–M5, async events M6+
-- Milestone summaries in Sprints/MILESTONE-SUMMARIES.md (append-only)
+- Namespace: `PeopleHub.Employees.*` (plural) — avoids entity/namespace collision
+- `<RootNamespace>` must be set in each `.csproj` that uses the `Employees` namespace to prevent EF migrations from reverting it
+- git commits are user-managed — Claude does not commit or push
+- GitHub remote: not yet configured (user task)
+- Migration path: run `dotnet ef database update` from `src/PeopleHub.Employees.API/`
+- Port: EmployeeService runs on :5237 (dev), :5002 (Docker)
 
 ## Watch Out For
-- `Core` project must have ZERO NuGet dependencies — verify before any commit
-- `dotnet run` for EmployeeService runs from `src/PeopleHub.Employee.API/`
-- Docker build context must be set to `services/employee-service/` (where the .sln is)
-- Services reference each other by container name inside Docker, never `localhost`
+- Every future service must use `PeopleHub.{ServiceName}s.*` namespace (plural) to avoid the same collision
+- EF migration namespace will default to the `.csproj` filename — always check generated migration files and set `<RootNamespace>` in the `.csproj` before running `dotnet ef migrations add`
+- Integration test project (`PeopleHub.Employees.IntegrationTests`) still has placeholder `UnitTest1.cs` — not yet written
 
 ## Dev State
-- Branch: main (peoplehub — no commits yet)
-- Tests: no tests written yet
-- Build: solution scaffolded, compiles (empty projects)
-- Last verified: 2026-05-14 (session 1)
-- Active milestone: M1 — EmployeeService + Dockerfile
+- Branch: main (peoplehub — commits pending, user handles)
+- Tests: 7/7 unit tests pass
+- Build: clean (`dotnet build` 0 errors, 0 warnings)
+- Docker: image `peoplehub-employee` built and verified
+- Last verified: 2026-05-14 (session 2)
+- Active milestone: M2 — HolidayService + Docker Compose

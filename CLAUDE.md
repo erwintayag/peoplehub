@@ -28,7 +28,7 @@ Learning style: hands-on first, concepts explained as each milestone is built.
 |---------|------|
 | `cd services/employee-service && dotnet build` | Build EmployeeService |
 | `cd services/employee-service && dotnet test` | Run all tests |
-| `cd services/employee-service/src/PeopleHub.Employee.API && dotnet run` | Run EmployeeService locally |
+| `cd services/employee-service/src/PeopleHub.Employees.API && dotnet run` | Run EmployeeService locally |
 | `docker build -t peoplehub-employee ./services/employee-service` | Build Docker image |
 | `docker run -p 5002:8080 peoplehub-employee` | Run container (M1) |
 | `docker compose up` | Start all services (M2+) |

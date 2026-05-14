@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PeopleHub.Employee.Application\PeopleHub.Employee.Application.csproj" />
-    <ProjectReference Include="..\PeopleHub.Employee.Infrastructure\PeopleHub.Employee.Infrastructure.csproj" />
+    <ProjectReference Include="..\PeopleHub.Employees.Application\PeopleHub.Employees.Application.csproj" />
+    <ProjectReference Include="..\PeopleHub.Employees.Infrastructure\PeopleHub.Employees.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

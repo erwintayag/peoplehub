@@ -4,34 +4,34 @@
 **Concept:** Containerization — packaging a .NET service as a self-contained Docker image.
 
 ### Tasks
-- [ ] Core layer
-  - [ ] `Employee.cs` — domain entity (private setters, `Create()` factory, `Update()`, `Deactivate()`)
-  - [ ] `IEmployeeRepository.cs` — interface (GetAll, GetById, Add, Update, Delete)
-  - [ ] `NotFoundException.cs` — domain exception
-- [ ] Application layer
-  - [ ] `EmployeeDto.cs` — response DTO
-  - [ ] `CreateEmployeeDto.cs`, `UpdateEmployeeDto.cs` — request DTOs
-  - [ ] `IEmployeeService.cs` — service interface
-  - [ ] `EmployeeService.cs` — implementation (Mapster mapping, delegates to IEmployeeRepository)
-  - [ ] `MappingConfig.cs` — Mapster profile (Employee → EmployeeDto)
-- [ ] Infrastructure layer
-  - [ ] `AppDbContext.cs` — EF Core DbContext (SQLite)
-  - [ ] `EmployeeRepository.cs` — IEmployeeRepository implementation
-  - [ ] `ServiceCollectionExtensions.cs` — DI wiring (AddScoped, AddDbContext)
-  - [ ] Initial EF migration: `dotnet ef migrations add InitialCreate`
-- [ ] API layer
-  - [ ] `Program.cs` — minimal host setup, DI wiring, Swagger, middleware
-  - [ ] `EmployeeEndpoints.cs` — CRUD endpoints + `/health`
-  - [ ] `appsettings.json` — connection string, port config
-- [ ] Dockerfile — multi-stage build (sdk → runtime)
-- [ ] Verify M1 complete:
-  - [ ] `dotnet build` — no errors
-  - [ ] `dotnet test` — all pass (at least 1 unit test per service method)
-  - [ ] `docker build` — succeeds
-  - [ ] `docker run` → `GET /health` returns 200
-  - [ ] `GET /api/v1/employees` returns empty array
-  - [ ] `POST /api/v1/employees` creates employee, `GET` returns it
-- [ ] Write M1 summary in `Sprints/MILESTONE-SUMMARIES.md`
+- [x] Core layer
+  - [x] `Employee.cs` — domain entity (private setters, `Create()` factory, `Update()`, `Deactivate()`)
+  - [x] `IEmployeeRepository.cs` — interface (GetAll, GetById, Add, Update, Delete)
+  - [x] `NotFoundException.cs` — domain exception
+- [x] Application layer
+  - [x] `EmployeeDto.cs` — response DTO
+  - [x] `CreateEmployeeDto.cs`, `UpdateEmployeeDto.cs` — request DTOs
+  - [x] `IEmployeeService.cs` — service interface
+  - [x] `EmployeeService.cs` — implementation (Mapster mapping, delegates to IEmployeeRepository)
+  - [x] `MappingConfig.cs` — Mapster profile (Employee → EmployeeDto)
+- [x] Infrastructure layer
+  - [x] `AppDbContext.cs` — EF Core DbContext (SQLite)
+  - [x] `EmployeeRepository.cs` — IEmployeeRepository implementation
+  - [x] `ServiceCollectionExtensions.cs` — DI wiring (AddScoped, AddDbContext)
+  - [x] Initial EF migration: `dotnet ef migrations add InitialCreate`
+- [x] API layer
+  - [x] `Program.cs` — minimal host setup, DI wiring, OpenAPI, middleware
+  - [x] `EmployeeEndpoints.cs` — CRUD endpoints + `/health`
+  - [x] `appsettings.json` — connection string
+- [x] Dockerfile — multi-stage build (sdk → runtime)
+- [x] Verify M1 complete:
+  - [x] `dotnet build` — no errors
+  - [x] `dotnet test` — 7/7 pass (Moq, EmployeeServiceTests)
+  - [x] `docker build` — succeeds
+  - [x] `docker run` → `GET /health` returns 200
+  - [x] `GET /api/v1/employees` returns empty array
+  - [x] `POST /api/v1/employees` creates employee, `GET` returns it
+- [x] Write M1 summary in `Sprints/MILESTONE-SUMMARIES.md`
 
 ---
 

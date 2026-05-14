@@ -47,7 +47,7 @@ Swagger UI per service available at their individual ports.
 ### Run (M1 — single service)
 
 ```bash
-cd services/employee-service/src/PeopleHub.Employee.API
+cd services/employee-service/src/PeopleHub.Employees.API
 dotnet run
 # Swagger: http://localhost:5002/swagger
 ```

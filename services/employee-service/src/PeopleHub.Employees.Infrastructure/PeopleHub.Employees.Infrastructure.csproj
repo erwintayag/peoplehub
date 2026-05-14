@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\PeopleHub.Employee.Core\PeopleHub.Employee.Core.csproj" />
-    <ProjectReference Include="..\PeopleHub.Employee.Application\PeopleHub.Employee.Application.csproj" />
+    <ProjectReference Include="..\PeopleHub.Employees.Application\PeopleHub.Employees.Application.csproj" />
+    <ProjectReference Include="..\PeopleHub.Employees.Core\PeopleHub.Employees.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +17,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>PeopleHub.Employees.Infrastructure</RootNamespace>
   </PropertyGroup>
 
 </Project>

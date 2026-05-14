@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PeopleHub.Employee.API\PeopleHub.Employee.API.csproj" />
+    <ProjectReference Include="..\..\src\PeopleHub.Employees.API\PeopleHub.Employees.API.csproj" />
   </ItemGroup>
 
 </Project>
