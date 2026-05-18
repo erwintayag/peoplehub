@@ -10,6 +10,20 @@ Learning style: hands-on first, concepts explained as each milestone is built.
 
 ---
 
+## Learning Style (M2+)
+
+**Code-along mode — active from M2 onwards.**
+
+The user writes the code. Claude's role:
+- Explain WHAT to build and WHY before any file is created
+- Give the user a chance to attempt it first
+- Review what the user writes, flag violations, suggest improvements
+- Only provide full code when user is stuck or explicitly asks for it
+
+**DO NOT auto-generate files or implementations.** Guide → user attempts → Claude reviews.
+
+---
+
 ## How to Start a Session
 
 ```
@@ -149,6 +163,7 @@ After each milestone: append a summary to `Sprints/MILESTONE-SUMMARIES.md`.
 
 ## DO NOT
 
+- Auto-generate full file implementations without user attempting first (M2+)
 - Mix two services in one `.sln`
 - Call `DbContext` from a controller or endpoint
 - Add NuGet packages to the `Core` project
